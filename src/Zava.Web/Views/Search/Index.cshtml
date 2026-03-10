@@ -1,0 +1,47 @@
+@model Zava.Web.Models.SearchPageViewModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+<section>
+    <h1 class="display-title">Search Products</h1>
+    <p class="lead-copy">Search our amazing outdoor products that you can purchase.</p>
+
+    <form method="get" class="search-form">
+        <label class="form-label" for="query">Type your question:</label>
+        <div class="search-row">
+            <input id="query" name="query" class="search-input" value="@Model.Query" />
+            <button type="submit" class="primary-button">Search</button>
+        </div>
+        <label class="check-row">
+            <input type="checkbox" name="useSemanticSearch" value="true" @(Model.UseSemanticSearch ? "checked" : null) />
+            <span>Use Semantic Search</span>
+        </label>
+    </form>
+
+    @if (Model.Result is not null)
+    {
+        <div class="result-summary">@Model.Result.Products.Count Products found for [@Model.Result.Query]</div>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var product in Model.Result.Products)
+            {
+                <tr>
+                    <td><img class="product-image" src="~/images/@product.ImageName" alt="@product.Name" /></td>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price.ToString("C")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</section>

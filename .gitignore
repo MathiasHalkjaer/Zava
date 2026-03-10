@@ -1,0 +1,16 @@
+bin/
+obj/
+.vs/
+.vscode/*.log
+.vscode/*.tmp
+TestResults/
+*.user
+*.suo
+*.cache
+*.pdb
+*.dbmdl
+*.jfm
+*.publishsettings
+*.nupkg
+*.snupkg
+artifacts/

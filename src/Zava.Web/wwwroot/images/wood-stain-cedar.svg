@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <rect width="120" height="120" fill="#f7f7f7"/>
+  <rect x="28" y="22" width="42" height="72" rx="4" fill="#d28144" stroke="#9b5c28"/>
+  <rect x="74" y="44" width="20" height="50" fill="#b56a33"/>
+  <rect x="34" y="46" width="30" height="24" fill="#f0d7b9"/>
+  <text x="49" y="58" text-anchor="middle" font-size="8" font-family="Arial" fill="#5c3719">WOOD</text>
+  <text x="49" y="68" text-anchor="middle" font-size="8" font-family="Arial" fill="#5c3719">STAIN</text>
+</svg>

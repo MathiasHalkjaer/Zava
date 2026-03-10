@@ -1,0 +1,38 @@
+@model Zava.Web.Models.ProductPageViewModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<section>
+    <h1 class="display-title">Products</h1>
+    <p class="lead-copy">Here are some of our amazing outdoor products that you can purchase.</p>
+
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td><img class="product-image" src="~/images/@product.ImageName" alt="@product.Name" /></td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price.ToString("C")</td>
+                <td>
+                    <form asp-controller="Cart" asp-action="Add" method="post">
+                        <input type="hidden" name="productId" value="@product.Id" />
+                        <button type="submit" class="primary-button">Add to Cart</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>

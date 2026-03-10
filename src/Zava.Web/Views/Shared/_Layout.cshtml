@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Zava</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Zava.Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="shell">
+        <aside class="side-nav">
+            <div class="brand-row">
+                <a class="brand-link" asp-controller="Home" asp-action="Index">Zava - InMemory</a>
+                <a class="cart-badge" asp-controller="Cart" asp-action="Index">Cart</a>
+            </div>
+
+            <nav class="menu-list">
+                <a class="menu-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : string.Empty)" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="menu-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Products" ? "active" : string.Empty)" asp-controller="Products" asp-action="Index">Products</a>
+                <a class="menu-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Search" ? "active" : string.Empty)" asp-controller="Search" asp-action="Index">Search</a>
+                <a class="menu-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Cart" ? "active" : string.Empty)" asp-controller="Cart" asp-action="Index">Cart</a>
+            </nav>
+        </aside>
+
+        <div class="content-shell">
+            <header class="top-bar">
+                <a class="source-link" asp-controller="Home" asp-action="SourceCode">Source Code</a>
+            </header>
+            <main class="page-content">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

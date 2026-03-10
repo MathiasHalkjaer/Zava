@@ -1,0 +1,70 @@
+@model Zava.Web.Models.CartPageViewModel
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<section>
+    <div class="cart-header">
+        <h1 class="display-title">Shopping Cart</h1>
+        <a class="secondary-link" asp-controller="Products" asp-action="Index">Continue Shopping</a>
+    </div>
+
+    @if (Model.WasCheckedOut)
+    {
+        <div class="info-card mb-4">Checkout is intentionally mocked for this demo. Proceeding to checkout clears the cart.</div>
+    }
+
+    <div class="cart-grid">
+        <section class="cart-items-panel">
+            <h2 class="panel-title">Cart Items (@Model.Items.Count items)</h2>
+            @if (Model.Items.Count == 0)
+            {
+                <p class="mb-0">Your cart is empty.</p>
+            }
+            else
+            {
+                @foreach (var item in Model.Items)
+                {
+                    <article class="cart-item-row">
+                        <img class="cart-image" src="~/images/@item.Product.ImageName" alt="@item.Product.Name" />
+                        <div>
+                            <h3 class="item-title">@item.Product.Name</h3>
+                            <p class="item-copy">@item.Product.Description</p>
+                            <p class="stock-copy">In Stock</p>
+                        </div>
+                        <div class="item-price">@item.Product.Price.ToString("C")</div>
+                        <div class="quantity-stack">
+                            <form asp-action="Decrease" method="post">
+                                <input type="hidden" name="productId" value="@item.Product.Id" />
+                                <button class="icon-button" type="submit">-</button>
+                            </form>
+                            <span class="quantity-value">@item.Quantity</span>
+                            <form asp-action="Increase" method="post">
+                                <input type="hidden" name="productId" value="@item.Product.Id" />
+                                <button class="icon-button" type="submit">+</button>
+                            </form>
+                        </div>
+                        <div class="line-total">@item.LineTotal.ToString("C")</div>
+                        <form asp-action="Remove" method="post">
+                            <input type="hidden" name="productId" value="@item.Product.Id" />
+                            <button class="danger-button" type="submit">Remove</button>
+                        </form>
+                    </article>
+                }
+            }
+            <form asp-action="Clear" method="post" class="mt-4">
+                <button type="submit" class="ghost-button">Clear Cart</button>
+            </form>
+        </section>
+
+        <aside class="summary-panel">
+            <h2 class="panel-title">Order Summary</h2>
+            <div class="summary-row"><span>Subtotal:</span><span>@Model.Subtotal.ToString("C")</span></div>
+            <div class="summary-row"><span>Tax (8%):</span><span>@Model.Tax.ToString("C")</span></div>
+            <div class="summary-row total-row"><span>Total:</span><span>@Model.Total.ToString("C")</span></div>
+            <form asp-action="Checkout" method="post">
+                <button type="submit" class="checkout-button">Proceed to Checkout</button>
+            </form>
+        </aside>
+    </div>
+</section>

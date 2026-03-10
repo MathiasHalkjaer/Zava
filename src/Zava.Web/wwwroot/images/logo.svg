@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154 40" fill="none" role="img" aria-label="Zava logo">
+  <!-- Z icon mark: purple rounded square -->
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#6c47d4"/>
+  <!-- Bold Z letterform inside icon -->
+  <polyline points="10,11 28,11 10,29 28,29" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Wordmark "ZAVA" as paths (bold geometric sans-serif) -->
+  <!-- Z -->
+  <path d="M46 11h14v3.2L50.4 28.2H60V31H46v-3.2l9.6-14H46V11z" fill="#ffffff"/>
+  <!-- A -->
+  <path d="M70 11l8 20h-3.6l-1.6-4.4h-6.4L64.8 31H61.2L70 11zm2.4 12.8L70 17.4l-2.4 6.4h4.8z" fill="#ffffff"/>
+  <!-- V -->
+  <path d="M79 11h3.8l5.2 15.6L93.2 11H97L90 31h-4L79 11z" fill="#ffffff"/>
+  <!-- A -->
+  <path d="M106 11l8 20h-3.6l-1.6-4.4h-6.4L100.8 31H97.2L106 11zm2.4 12.8L106 17.4l-2.4 6.4h4.8z" fill="#ffffff"/>
+</svg>

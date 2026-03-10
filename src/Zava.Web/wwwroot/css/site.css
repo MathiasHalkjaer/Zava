@@ -52,6 +52,12 @@ a {
   font-weight: 600;
 }
 
+.brand-logo {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
 .cart-badge,
 .cart-badge:hover {
   color: #fff;

@@ -1,0 +1,30 @@
+@model Zava.Models.Product
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<section>
+    <nav aria-label="breadcrumb" class="mb-3">
+        <a asp-controller="Products" asp-action="Index" class="back-link">← Back to Products</a>
+    </nav>
+
+    <div class="product-details">
+        <div class="product-details-image">
+            <img src="~/images/@Model.ImageName" alt="@Model.Name" class="product-details-img" />
+        </div>
+        <div class="product-details-info">
+            <h1 class="display-title">@Model.Name</h1>
+            <p class="product-details-category">Category: <strong>@Model.Category</strong></p>
+            <p class="lead-copy">@Model.Description</p>
+            <p class="product-details-price">@Model.Price.ToString("C")</p>
+            <p class="product-details-stock @(Model.InStock ? "in-stock" : "out-of-stock")">
+                @(Model.InStock ? "✓ In Stock" : "✗ Out of Stock")
+            </p>
+
+            <form asp-controller="Cart" asp-action="Add" method="post" class="mt-3">
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <button type="submit" class="primary-button" @(Model.InStock ? null : "disabled")>Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</section>
